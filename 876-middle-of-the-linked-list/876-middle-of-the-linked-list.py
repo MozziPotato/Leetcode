@@ -6,29 +6,13 @@
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        is_end = False
-        length = 0
+        slow = fast = head
         
-        curr = head
-        ans = head
-        
-        while not is_end:
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
             
-            if curr.next == None:
-                length += 1
-                is_end = True
-            else:
-                curr = curr.next
-                length += 1
-        
-        # 5 -> 2
-        # 6 -> 3
-        mid = length//2
-        
-        for i in range(mid):
-            ans = ans.next
-        
-        return ans
+        return slow
         
             
         
