@@ -1,25 +1,17 @@
 class Solution:
     def minSetSize(self, arr: List[int]) -> int:
         
-        myDict = dict()
+        c = Counter(arr)
         halfSize = len(arr)/2
         
-        for ele in arr:
+        setCount = 0
+        setSize = 0
+        
+        for num, counts in c.most_common():
+            setCount += counts
+            setSize += 1
+            if setCount >= halfSize:
+                return setSize
+        
+        return setSize
             
-            if ele in myDict:
-                myDict[ele] += 1
-            else:
-                myDict[ele] = 1
-                
-        myDict = dict(sorted(myDict.items(), key=lambda x:x[1], reverse=True))
-        
-        sumSize = 0
-        count = 0
-        
-        for key, val in myDict.items():
-            sumSize += val
-            count += 1
-            if sumSize >= halfSize:
-                break
-                
-        return count
