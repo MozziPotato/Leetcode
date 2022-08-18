@@ -1,28 +1,21 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         
-        # exception
-        if len(s) == 0:
-            return 0
         
-        longest_length = 0
+        curr = ""
+        longest = ""
         
-        for i in range(len(s)):
+        for ch in s:
             
-            mySet = set()
-            curr_length = len(mySet)
-            
-            for j in range(i, len(s)):
-                
-                if s[j] not in mySet:
-                    mySet.add(s[j])
-                    curr_length += 1
-                else:
-                    if longest_length < curr_length:
-                        longest_length = curr_length
-                    break
-            
-            if longest_length < curr_length:
-                longest_length = curr_length
+            if ch not in curr:
+                curr += ch
+            else:
+                if len(curr) > len(longest):
+                    longest = curr
+                curr += ch
+                curr = curr[curr.find(ch)+1:]
         
-        return longest_length
+        if len(curr) > len(longest):
+            longest = curr
+            
+        return len(longest)
