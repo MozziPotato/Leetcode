@@ -1,9 +1,11 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         
-        # 단순한 nested loop(N^2) -> Time Limit Exceeded
-        # current longest length를 참고하여 loop(N^2)
-        # current longest length를 참고하여 n-gram 형식으로
+        # Brute Force (N^3) -> Time Limit Exceeded
+        
+        ############################################################################
+        
+        # current longest length를 참고하여 loop(N^3) -> Accepted(Runtime 9117ms)
         
         longestPalindrome = ""
         length = 0
@@ -18,6 +20,27 @@ class Solution:
                         length = len(longestPalindrome)
         
         return longestPalindrome
+        
+        ############################################################################
+    
+        # current longest length를 참고하여 n-gram check -> Time Limit Exceeded
+        
+        #longestPalindrome = ""
+        #length = 0
+        
+        #for n_gram in range(1,len(s)+1):
+        #    found = False
+        #    startnum = 0
+        #    endnum = n_gram
+        #    while not found and endnum < len(s)+1:
+        #        found = self.isPalindrome(s[startnum:endnum])
+        #        if not found:
+        #            startnum += 1
+        #            endnum += 1
+        #        else:
+        #            longestPalindrome = s[startnum:endnum]
+        #
+        #return longestPalindrome
                 
     def isPalindrome(self, s: str) -> bool:
         
