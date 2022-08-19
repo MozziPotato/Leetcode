@@ -49,24 +49,24 @@ class Solution:
     #    else:
     #        return False
     
-        n = len(s)
-        res = ""
-        maxl = 0
+        length = len(s)
+        longest = ""
+        max_length = 0
 
-        for i in range(0,n):
-            l, r = i, i
-            while l >= 0 and r < n and s[l] == s[r]:
-                if r-l+1 > maxl:
-                    res = s[l:r+1]
-                    maxl = r-l+1
-                l -= 1
-                r += 1
+        for i in range(0,length):
+            left, right = i, i
+            while left >= 0 and right < length and s[left] == s[right]:
+                if right-left+1 > max_length:
+                    longest = s[left:right+1]
+                    max_length = right-left+1
+                left -= 1
+                right += 1
 
-            l, r = i, i+1
-            while l >= 0 and r < n and s[l] == s[r]:
-                if r-l+1 > maxl:
-                    res = s[l:r+1]
-                    maxl = r-l+1
-                l -= 1
-                r += 1
-        return res
+            left, right = i, i+1
+            while left >= 0 and right < length and s[left] == s[right]:
+                if right-left+1 > max_length:
+                    longest = s[left:right+1]
+                    max_length = right-left+1
+                left -= 1
+                right += 1
+        return longest
