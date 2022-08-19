@@ -35,9 +35,3 @@ class Solution:
             return (mergedlist[length//2-1] + mergedlist[length//2])/2
         
         return mergedlist
-    
-    def mergeSort(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        
-        
-        
-        return mergedlist
