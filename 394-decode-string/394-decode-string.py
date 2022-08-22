@@ -4,7 +4,7 @@ class Solution:
         # ASCII numbers: 48 ~ 57
         # ASCII alphabets: 97 ~ 122
         
-        stack = []
+        container = []
         
         bracket_count = 0
         bracket = ""
@@ -25,19 +25,19 @@ class Solution:
                     bracket += ch
                 else:
                     bracket_count -= 1
-                    stack.append(bracket)
+                    container.append(bracket)
                     bracket = ""
             
             elif bracket_count > 0:
                 bracket += ch
             
             else:
-                stack.append(ch)
+                container.append(ch)
                 
         number = ""
         times = False
         
-        for element in stack:
+        for element in container:
             
             if len(element) > 1:
                 tmp = self.decodeString(element)
