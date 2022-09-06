@@ -29,5 +29,3 @@ class Solution:
                 pos = pos.next
         
         return root.next
-                
-        
