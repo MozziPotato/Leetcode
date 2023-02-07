@@ -72,7 +72,6 @@ class Solution:
         # 즉, list[i+(0*word_length)], list[i+(1*word_length)], ..., list[i + (max_length * word_length) - word_length)]
         # ["boo", "the", "far", "boo"] -> {"boo":1, "the":2, "far":3} -> {1:2, 2:1, 3:1}
         
-        
         output = list()        
         dictionary = dict()
         
@@ -115,5 +114,3 @@ class Solution:
         
         
         return output
-        
-        
