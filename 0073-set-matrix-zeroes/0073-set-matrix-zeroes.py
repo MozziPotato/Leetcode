@@ -6,17 +6,38 @@ class Solution:
         
         height = len(matrix)
         width = len(matrix[0])
-        coordinates = list()
+        col_zero_exist = False
+        row_zero_exist = False
+        
+        for i in range(height):
+            if matrix[i][0] == 0:
+                col_zero_exist = True
+        
+        for j in range(width):
+            if matrix[0][j] == 0:
+                row_zero_exist = True
         
         for i in range(height):
             for j in range(width):
                 value = matrix[i][j]
                 if not value:
-                    coordinates.append([i,j])
+                    matrix[0][j] = 0
+                    matrix[i][0] = 0
         
-        for coordinate in coordinates:
+        for i in range(1,height):
+            if matrix[i][0] == 0:
+                for j in range(width):
+                    matrix[i][j] = 0
+        
+        for j in range(1,width):
+            if matrix[0][j] == 0:
+                for i in range(height):
+                    matrix[i][j] = 0
+        
+        if col_zero_exist:
             for i in range(height):
-                matrix[i][coordinate[1]] = 0
+                matrix[i][0] = 0
+        
+        if row_zero_exist:
             for j in range(width):
-                matrix[coordinate[0]][j] = 0
-                    
+                matrix[0][j] = 0
