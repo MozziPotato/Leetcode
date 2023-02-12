@@ -12,10 +12,12 @@ class Solution:
         if not node:
             return
         
+        # original graph의 BFS를 위한 Hashing (방문 여부를 value로)
         q = deque([node])
         visited = dict()
         visited[node.val] = True
         
+        # clone graph를 위한 Hashing (Node class를 value로)
         root = Node(node.val)
         adjacency = dict()
         adjacency[root.val] = root
