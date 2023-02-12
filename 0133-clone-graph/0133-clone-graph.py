@@ -23,14 +23,20 @@ class Solution:
         adjacency[root.val] = root
         
         while q:
+            # original graph의 node 방문
             p = q.popleft()
+            # cloned node를 return
             curr = adjacency[p.val]
+            # original graph의 node의 이웃을 모두 방문
             for neighbor in p.neighbors:
+                # 이웃을 방문한 적이 없다면 Hashing & enqueue
                 if neighbor.val not in visited.keys():
                     visited[neighbor.val] = True
                     q.append(neighbor)
+                # 이웃을 cloning한 적이 없다면 Hashing & Cloning
                 if neighbor.val not in adjacency.keys():
                     adjacency[neighbor.val] = Node(neighbor.val)
+                # cloned node의 이웃으로 original graph의 이웃을 저장
                 curr.neighbors.append(adjacency[neighbor.val])
                 
         return root
